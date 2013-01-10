@@ -3,7 +3,7 @@ var plans = pricing(function (plan) {
     console.log('purchased ' + plan.name);
     plan.confirm();
 });
-plans.appendTo('#plans');
+plans.appendTo('#pricing');
 
 plans.add('free', {
     price: 0,

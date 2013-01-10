@@ -1,3 +1,9 @@
+h1 {
+    margin-bottom: 15px;
+    text-align: center;
+    color: rgb(40,80,120);
+}
+
 #pricing {
     position: relative;
     text-align: center;
@@ -5,12 +11,8 @@
     margin: auto;
 }
 
-#pricing h1 {
-    margin-bottom: 5px;
-}
-
 #pricing .box {
-    background-image: url(/images/newsite/pricing_form.png);
+    background-image: url(/images/pricing_form.png);
     width: 570px;
     height: 494px;
     padding: 15px;
@@ -71,7 +73,7 @@
     bottom: 130px;
     width: 201px;
     height: 51px;
-    background-image: url(/images/newsite/buy.png);
+    background-image: url(/images/buy.png);
     background-color: transparent;
     padding: 0px;
     border-width: 0px;
@@ -106,22 +108,22 @@
 
 #pricing .buy.pressed:active,
 #pricing .buy.pressed {
-    background-image: url(/images/newsite/buy_pressed.png);
+    background-image: url(/images/buy_pressed.png);
 }
 
 #pricing .buy.free {
-    background-image: url(/images/newsite/downgrade.png);
+    background-image: url(/images/downgrade.png);
 }
 
 #pricing .buy.free.pressed:active,
 #pricing .buy.free.pressed {
-    background-image: url(/images/newsite/downgrade_pressed.png);
+    background-image: url(/images/downgrade_pressed.png);
 }
 
 #pricing .cc .purchase {
     width: 201px;
     height: 51px;
-    background-image: url(/images/newsite/purchase.png);
+    background-image: url(/images/purchase.png);
     background-color: transparent;
     color: transparent;
     padding: 0px;
@@ -131,7 +133,7 @@
 
 #pricing .cc .purchase.pressed:active,
 #pricing .cc .purchase.pressed {
-    background-image: url(/images/newsite/purchase_pressed.png);
+    background-image: url(/images/purchase_pressed.png);
 }
 
 #pricing .busy {
@@ -194,7 +196,7 @@
     display: none;
     width: 369;
     height: 480;
-    background-image: url(/images/newsite/account_upgraded.png);
+    background-image: url(/images/account_upgraded.png);
     margin: auto;
     margin-top: 10px;
 }

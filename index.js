@@ -2,7 +2,7 @@ var EventEmitter = require('events').EventEmitter;
 var hyperglue = require('hyperglue');
 
 var html = {
-    pricing: require('./html/pricing'),
+    box: require('./html/box'),
     plan: require('./html/plan'),
     //purchase: require('./html/purchase'),
     success: require('./html/success')
@@ -14,7 +14,7 @@ function Plans (cb) {
     if (!(this instanceof Plans)) return new Plans(cb);
     EventEmitter.call(this);
     
-    this.element = document.createElement('div');
+    this.element = hyperglue(html.box, {});
     if (typeof cb === 'function') this.on('buy', cb);
 }
 
@@ -25,7 +25,7 @@ Plans.prototype.add = function (name, plan) {
         '.icon img': { src: plan.image },
         '.price .amount': plan.price,
         '.price .per': plan.per ? '/ ' + plan.per : '',
-        '.title': plan.title !== undefined ? plan.title : name + ' ' + plan,
+        '.title': plan.title !== undefined ? plan.title : name + ' plan',
         '.desc .text': plan.description || '',
     });
     this.element.appendChild(div);
