@@ -39,7 +39,7 @@ h1 {
 }
 
 #pricing .plan:hover {
-    background-color: rgb(130,100,150);
+    background-color: rgba(110,50,130,0.3);
     border-radius: 30px;
 }
 
