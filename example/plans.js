@@ -1,14 +1,13 @@
 var pricing = require('../');
-var plans = pricing(function (plan, cb) {
+var plans = pricing(function (plan) {
     console.log('purchased ' + plan.name);
-    cb(null);
+    plan.confirm();
 });
-plans.appendTo('#plan');
+plans.appendTo('#plans');
 
 plans.add('free', {
     price: 0,
     per: 'month',
-    title: 'free plan',
     image: 'images/free.png',
     description: 'free plan...'
 });
@@ -16,7 +15,6 @@ plans.add('free', {
 plans.add('developer', {
     price: 20,
     per: 'month',
-    title: 'developer plan',
-    image: 'images/free.png',
+    image: 'images/developer.png',
     description: 'developer plan...'
 });

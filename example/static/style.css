@@ -1,0 +1,205 @@
+#pricing {
+    position: relative;
+    text-align: center;
+    width: 600px;
+    margin: auto;
+}
+
+#pricing h1 {
+    margin-bottom: 5px;
+}
+
+#pricing .box {
+    background-image: url(/images/newsite/pricing_form.png);
+    width: 570px;
+    height: 494px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+#pricing #special {
+    width: 450px;
+    margin: auto;
+    margin-top: 10px;
+    background-color: rgb(203,219,250);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+#pricing .plan {
+    height: 150px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+#pricing .plan:hover {
+    background-color: rgb(130,100,150);
+    border-radius: 30px;
+}
+
+#pricing .plan .yours {
+    display: none;
+}
+
+#pricing .plan.using .yours {
+    display: block;
+    font-size: 20px;
+    color: rgb(255,255,0);
+}
+
+#pricing .plan.using {
+    background-color: rgb(90,110,130);
+    border-radius: 30px;
+}
+
+#pricing .back {
+    display: none;
+    font-size: 24px;
+    position: absolute;
+    right: 50px;
+    bottom: 140px;
+}
+
+#pricing .buy {
+    display: none;
+    position: absolute;
+    left: 200px;
+    bottom: 130px;
+    width: 201px;
+    height: 51px;
+    background-image: url(/images/newsite/buy.png);
+    background-color: transparent;
+    padding: 0px;
+    border-width: 0px;
+}
+
+#pricing .cc {
+    display: none;
+    padding: 15px;
+    border-radius: 25px;
+    background-color: rgb(240,248,252);
+    width: 300px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#pricing .cc input[type="text"] {
+    text-align: center;
+    border-radius: 10px;
+    padding: 3px;
+    border-style: solid;
+    border-color: rgb(30,50,120);
+}
+
+#pricing .cc div {
+    margin-bottom: 5px;
+}
+
+#pricing .cc .plan-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#pricing .buy.pressed:active,
+#pricing .buy.pressed {
+    background-image: url(/images/newsite/buy_pressed.png);
+}
+
+#pricing .buy.free {
+    background-image: url(/images/newsite/downgrade.png);
+}
+
+#pricing .buy.free.pressed:active,
+#pricing .buy.free.pressed {
+    background-image: url(/images/newsite/downgrade_pressed.png);
+}
+
+#pricing .cc .purchase {
+    width: 201px;
+    height: 51px;
+    background-image: url(/images/newsite/purchase.png);
+    background-color: transparent;
+    color: transparent;
+    padding: 0px;
+    border-width: 0px;
+    margin-top: 10px;
+}
+
+#pricing .cc .purchase.pressed:active,
+#pricing .cc .purchase.pressed {
+    background-image: url(/images/newsite/purchase_pressed.png);
+}
+
+#pricing .busy {
+    display: none;
+}
+
+#pricing .box a:link, #pricing .box a:visited {
+    color: rgb(215,245,255);
+}
+
+.plan .more {
+    display: none;
+    text-align: left;
+    position: absolute;
+    top: 240px;
+    left: 40px;
+    color: white;
+}
+
+.plan .more ul li {
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.plan .more .additional {
+    margin-bottom: 10px;
+}
+
+.plan .icon {
+    float: left;
+}
+
+.plan .desc {
+    margin-left: 170px;
+    text-align: left;
+    color: white;
+}
+
+.plan .desc .price {
+    float: right;
+    color: white;
+    font-size: 20px;
+}
+
+.plan .desc .price .per {
+    font-size: 12px;
+}
+
+.plan .desc .title {
+    font-size: 24px;
+    color: rgb(255,255,0);
+}
+
+.plan .desc .features {
+    color: rgb(180,255,100);
+    margin-top: 10px;
+}
+
+#payment-success {
+    display: none;
+    width: 369;
+    height: 480;
+    background-image: url(/images/newsite/account_upgraded.png);
+    margin: auto;
+    margin-top: 10px;
+}
+
+#purchase .error {
+    font-weight: bold;
+    color: red;
+}
