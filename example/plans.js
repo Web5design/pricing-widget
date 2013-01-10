@@ -18,3 +18,10 @@ plans.add('developer', {
     image: 'images/developer.png',
     description: 'developer plan...'
 });
+
+plans.add('team', {
+    price: function (n) { return n * 20 },
+    per: 'month',
+    image: 'images/developer.png',
+    description: 'developer plan...'
+});
