@@ -1,6 +1,8 @@
 var EventEmitter = require('events').EventEmitter;
 var hyperglue = require('hyperglue');
 var swoop = require('swoop');
+var singlePage = require('single-page');
+var path = require('path');
 
 var html = {
     plan: require('./html/plan'),
@@ -11,19 +13,38 @@ var html = {
 
 module.exports = Plans;
 
-function Plans (cb) {
-    if (!(this instanceof Plans)) return new Plans(cb);
+function Plans (opts, cb) {
+    var self = this;
+    if (!(this instanceof Plans)) return new Plans(opts, cb);
     EventEmitter.call(this);
     
-    this.plans = document.createElement('div');
+    if (typeof opts === 'function') { cb = opts; opts = {} }
+    if (!opts) opts = {};
+    if (opts.path === undefined) opts.path = '/pricing';
     
-    this.pages = swoop({
-        plans: this.plans
-    });
-    this.pages.element.className = 'plans';
-    this.pages.show('plans');
+    self.plans = document.createElement('div');
     
-    if (typeof cb === 'function') this.on('buy', cb);
+    self.pages = swoop({ plans: self.plans });
+    self.pages.element.className = 'plans';
+    self.pages.show('plans');
+    
+    if (opts.path !== false) {
+        self.showPage = singlePage(function (href) {
+            var name = path.relative(opts.path, href);
+            if (href === '/' || name === '' || name === 'plans') {
+                self.pages.show('plans');
+            }
+            else if (path.basename(name) === name) {
+                self.pages.show('_' + name);
+            }
+        });
+        self.pages.on('show', function (next) {
+            var href = path.resolve(opts.path, next.replace(/^_/, ''));
+            self.showPage.push(href);
+        });
+    }
+    
+    if (typeof cb === 'function') self.on('buy', cb);
 }
 
 Plans.prototype = new EventEmitter;
@@ -58,6 +79,11 @@ Plans.prototype.add = function (name, plan) {
             }
             return ul;
         })()
+    });
+    var back = slide.querySelector('.back a');
+    back.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        window.history.back();
     });
     self.pages.addSlide('_' + name, slide);
 };
