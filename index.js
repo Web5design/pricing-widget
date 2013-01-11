@@ -7,7 +7,7 @@ var path = require('path');
 var html = {
     plan: require('./html/plan'),
     more: require('./html/more'),
-    //purchase: require('./html/purchase'),
+    purchase: require('./html/purchase'),
     success: require('./html/success')
 };
 
@@ -22,27 +22,30 @@ function Plans (opts, cb) {
     if (!opts) opts = {};
     if (opts.path === undefined) opts.path = '/pricing';
     
-    self.plans = document.createElement('div');
+    self.plans = {};
     
-    self.pages = swoop({ plans: self.plans });
+    self.pages = swoop({
+        plans: document.createElement('div'),
+        purchase: hyperglue(html.purchase, {})
+    });
     self.pages.element.className = 'plans';
     self.pages.show('plans');
     
-    if (opts.path !== false) {
-        self.showPage = singlePage(function (href) {
-            var name = path.relative(opts.path, href);
-            if (href === '/' || name === '' || name === 'plans') {
-                self.pages.show('plans');
-            }
-            else if (path.basename(name) === name) {
-                self.pages.show('_' + name);
-            }
-        });
-        self.pages.on('show', function (next) {
-            var href = path.resolve(opts.path, next.replace(/^_/, ''));
-            self.showPage.push(href);
-        });
-    }
+    var showPage = singlePage(function (href) {
+        var name = path.relative(opts.path, href);
+        if (href === '/' || name === '' || name === 'plans') {
+            self.pages.show('plans');
+        }
+        else if (self.plans[name]) {
+            self.pages.show('_' + name);
+        }
+        else if (path.basename(name) === name) {
+            self.pages.show(name);
+        }
+    });
+    self.showPage = function (href) {
+        showPage(path.resolve(opts.path, href));
+    };
     
     if (typeof cb === 'function') self.on('buy', cb);
 }
@@ -51,6 +54,7 @@ Plans.prototype = new EventEmitter;
 
 Plans.prototype.add = function (name, plan) {
     var self = this;
+    self.plans[name] = plan;
     
     var params = {
         '.icon img': { src: plan.image },
@@ -62,10 +66,10 @@ Plans.prototype.add = function (name, plan) {
     };
     var label = hyperglue(html.plan, params);
     label.addEventListener('click', function (ev) {
-        label.style.display = 'block';
-        self.pages.show('_' + name);
+        ev.preventDefault();
+        self.showPage(name);
     });
-    self.plans.appendChild(label);
+    self.pages.slides.plans.appendChild(label);
     
     var slide = hyperglue(html.more, {
         '.heading': hyperglue(html.plan, params),
@@ -85,6 +89,15 @@ Plans.prototype.add = function (name, plan) {
         ev.preventDefault();
         window.history.back();
     });
+    
+    var buy = slide.querySelector('.buy');
+    buy.addEventListener('click', function (ev) {
+        hyperglue(self.pages.slides.purchase, {
+            
+        });
+        self.showPage('purchase');
+    });
+    
     self.pages.addSlide('_' + name, slide);
 };
 
