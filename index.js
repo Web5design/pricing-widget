@@ -20,31 +20,22 @@ function Plans (opts, cb) {
     
     if (typeof opts === 'function') { cb = opts; opts = {} }
     if (!opts) opts = {};
-    if (opts.path === undefined) opts.path = '/pricing';
+    self.path = opts.path === undefined ? '/pricing' : opts.path;
     
     self.plans = {};
     
     self.pages = swoop({
         plans: document.createElement('div'),
-        purchase: hyperglue(html.purchase, {})
     });
+    
     self.pages.element.className = 'plans';
     self.pages.show('plans');
     
     var showPage = singlePage(function (href) {
-        var name = path.relative(opts.path, href);
-        if (href === '/' || name === '' || name === 'plans') {
-            self.pages.show('plans');
-        }
-        else if (self.plans[name]) {
-            self.pages.show('_' + name);
-        }
-        else if (path.basename(name) === name) {
-            self.pages.show(name);
-        }
+        self._pageHandler(href);
     });
     self.showPage = function (href) {
-        showPage(path.resolve(opts.path, href));
+        showPage(path.resolve(self.path, href));
     };
     
     if (typeof cb === 'function') self.on('buy', cb);
@@ -92,13 +83,24 @@ Plans.prototype.add = function (name, plan) {
     
     var buy = slide.querySelector('.buy');
     buy.addEventListener('click', function (ev) {
-        hyperglue(self.pages.slides.purchase, {
-            
-        });
-        self.showPage('purchase');
+        self.showPage(name + '/purchase');
     });
     
-    self.pages.addSlide('_' + name, slide);
+    self.pages.addSlide(name, slide);
+    
+    var purchase = hyperglue(html.purchase, {
+        '.plan-name': params['.title'],
+        'input[name="amount"]': { value: plan.price },
+        'input[name="plan"]': { value: name }
+    });
+    self.pages.addSlide(name + '/purchase', purchase);
+    
+    var back = purchase.querySelector('.back a');
+    back.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        window.history.back();
+    });
+    
 };
 
 Plans.prototype.appendTo = function (target) {
@@ -106,4 +108,17 @@ Plans.prototype.appendTo = function (target) {
         target = document.querySelector(target);
     }
     this.pages.appendTo(target);
+};
+
+Plans.prototype._pageHandler = function (href) {
+    var name = path.relative(this.path, href);
+    if (href === '/' || name === '' || name === 'plans') {
+        this.pages.show('plans');
+    }
+    else if (this.plans[name]) {
+        this.pages.show(name);
+    }
+    else if (!/^(\.\.|\/)/.test(name)) {
+        this.pages.show(name);
+    }
 };
