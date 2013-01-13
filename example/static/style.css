@@ -85,6 +85,10 @@ h1 {
     cursor: pointer;
 }
 
+#pricing .buy:active {
+    background-image: url(/images/buy_pressed.png);
+}
+
 #pricing .more .quantity {
     position: absolute;
     left: 0px;
@@ -148,7 +152,7 @@ h1 {
     background-color: rgb(240,248,252);
     width: 300px;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 35px;
 }
 
 #pricing .cc input[type="text"] {
@@ -191,6 +195,11 @@ h1 {
     padding: 0px;
     border-width: 0px;
     margin-top: 10px;
+    cursor: pointer;
+}
+
+#pricing .cc .purchase:active {
+    background-image: url(/images/purchase_pressed.png);
 }
 
 #pricing .cc .purchase.pressed:active,

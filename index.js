@@ -140,7 +140,11 @@ Plans.prototype.add = function (name, plan) {
         'input[name="plan"]': { value: name },
     });
     self.pages.addSlide(name + '/purchase', purchase);
-
+    
+    purchase.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+    });
+    
     (function () {
         var back = purchase.querySelector('.back a');
         back.addEventListener('click', function (ev) {
