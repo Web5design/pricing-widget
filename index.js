@@ -49,7 +49,7 @@ Plans.prototype.add = function (name, plan) {
     
     var params = {
         '.icon img': { src: plan.image },
-        '.price .amount': plan.price,
+        '.price .amount': plan.price.label || plan.price,
         '.price .per': plan.per ? '/ ' + plan.per : '',
         '.title': plan.title !== undefined ? plan.title : name + ' plan',
         '.desc .text': plan.description || '',
@@ -73,8 +73,16 @@ Plans.prototype.add = function (name, plan) {
                 ul.appendChild(li);
             }
             return ul;
-        })()
+        })(),
+        '.quantity input': {
+          value: plan.price && plan.price.initial || 2
+        }
     });
+    
+    slide.querySelector('.quantity').style.display
+        = plan.price.amount ? 'block' : 'none'
+    ;
+    
     var back = slide.querySelector('.back a');
     back.addEventListener('click', function (ev) {
         ev.preventDefault();

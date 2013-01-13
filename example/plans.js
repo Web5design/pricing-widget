@@ -32,8 +32,16 @@ plans.add('developer', {
 });
 
 plans.add('team', {
-    price: function (n) { return n * 20 },
+    price: {
+        amount: function (n) { return n * 20 },
+        label: '20 + 15 * n',
+        initial: 2
+    },
     per: 'month',
     image: 'images/developer.png',
-    description: ''
+    description: 'Buy developer plans for your whole team in bulk.',
+    more: [
+        'All the features of developer plans with ',
+        ''
+    ]
 });

@@ -78,6 +78,29 @@ h1 {
     cursor: pointer;
 }
 
+#pricing .more .quantity {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 100px;
+    text-align: center;
+    color: rgb(180,255,127);
+    font-size: 1.5em;
+}
+
+#pricing .more .quantity input {
+    width: 40px;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: rgb(255,255,0);
+    border-style: solid;
+    background-color: rgba(255,255,255,0.1);
+    color: rgb(255,255,0);
+}
+
 #pricing .cc {
     padding: 15px;
     border-radius: 25px;
@@ -144,9 +167,6 @@ h1 {
 
 .plans .more ul {
     text-align: left;
-    position: absolute;
-    top: 240px;
-    left: 40px;
     color: white;
 }
 
