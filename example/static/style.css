@@ -75,6 +75,7 @@ h1 {
     background-color: transparent;
     padding: 0px;
     border-width: 0px;
+    cursor: pointer;
 }
 
 #pricing .cc {
@@ -137,7 +138,7 @@ h1 {
     display: none;
 }
 
-#pricing .plans a:link, #pricing .plans a:visited {
+#pricing .back a:link, #pricing .back a:visited {
     color: rgb(215,245,255);
 }
 

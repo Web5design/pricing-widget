@@ -100,7 +100,6 @@ Plans.prototype.add = function (name, plan) {
         ev.preventDefault();
         window.history.back();
     });
-    
 };
 
 Plans.prototype.appendTo = function (target) {
