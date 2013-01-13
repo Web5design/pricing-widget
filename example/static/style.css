@@ -120,6 +120,14 @@ h1 {
     color: rgb(255,255,0);
 }
 
+#pricing .more .quantity .slide {
+    margin-top: 5px;
+}
+
+#pricing .more .quantity .slide .runner {
+    background-color: rgb(90,80,120);
+}
+
 #pricing .more .quantity input[name="quantity"] {
     width: 50px;
     height: 2.5em;

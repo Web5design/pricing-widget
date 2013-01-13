@@ -111,6 +111,11 @@ Plans.prototype.add = function (name, plan) {
     
     var buy = slide.querySelector('.buy');
     buy.addEventListener('click', function (ev) {
+        var amount = plan.price.formula
+            ? plan.price.formula(quantity.value)
+            : plan.price
+        ;
+        purchase.querySelector('.amount').textContent = amount;
         self.showPage(name + '/purchase');
     });
     
@@ -118,8 +123,12 @@ Plans.prototype.add = function (name, plan) {
     
     var purchase = hyperglue(html.purchase, {
         '.plan-name': params['.title'],
+        '.amount': plan.price.formula
+            ? plan.price.formula(plan.price.initial)
+            : plan.price
+        ,
         'input[name="amount"]': { value: plan.price },
-        'input[name="plan"]': { value: name }
+        'input[name="plan"]': { value: name },
     });
     self.pages.addSlide(name + '/purchase', purchase);
     
