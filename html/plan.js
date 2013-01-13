@@ -3,6 +3,7 @@ module.exports = [
     '<div class="icon"><img></div>',
     '<div class="desc">',
       '<div class="price">',
+        '<span class="starting">starting from</span>',
         '$<span class="amount">---</span>',
         '<span class="per"></span>',
       '</div>',

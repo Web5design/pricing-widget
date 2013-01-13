@@ -51,7 +51,10 @@ Plans.prototype.add = function (name, plan) {
     
     var params = {
         '.icon img': { src: plan.image },
-        '.price .amount': plan.price.amount || plan.price,
+        '.price .amount': plan.price.formula
+            ? plan.price.formula(plan.price.init)
+            : plan.price
+        ,
         '.price .per': plan.per ? '/ ' + plan.per : '',
         '.title': plan.title !== undefined ? plan.title : name + ' plan',
         '.desc .text': plan.description || '',
@@ -63,6 +66,10 @@ Plans.prototype.add = function (name, plan) {
         self.showPage(name);
     });
     self.pages.slides.plans.appendChild(label);
+    
+    label.querySelector('.starting').style.display
+        = plan.price.formula ? 'inline' : 'none'
+    ;
     
     var slide = hyperglue(html.more, {
         '.heading': hyperglue(html.plan, params),
@@ -79,7 +86,7 @@ Plans.prototype.add = function (name, plan) {
         '.quantity input[name="quantity"]': {
             value: plan.price && plan.price.initial || 2
         },
-        '.quantity .formula': plan.price.amount || '0',
+        '.quantity .formula': plan.price.equation || '0',
         '.quantity .result': plan.price.formula
             && plan.price.formula(plan.price.initial)
     });
@@ -88,7 +95,7 @@ Plans.prototype.add = function (name, plan) {
     var quantity = slide.querySelector('input[name="quantity"]');
     
     slide.querySelector('.quantity').style.display
-        = plan.price.amount ? 'block' : 'none'
+        = plan.price.formula ? 'block' : 'none'
     ;
     
     if (plan.price.formula) {
@@ -101,7 +108,9 @@ Plans.prototype.add = function (name, plan) {
         slider.appendTo(slide.querySelector('.slide'));
         slider.on('value', function (value) {
             quantity.value = value;
-            result.textContent = plan.price.formula(value);
+            var amount = plan.price.formula(value);
+            result.textContent = amount;
+            slide.querySelector('.amount').textContent = amount;
             buy.style.display = value <= 0 ? 'none' : 'block';
         });
         quantity.addEventListener('change', onchange);

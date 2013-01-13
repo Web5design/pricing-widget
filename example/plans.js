@@ -37,17 +37,18 @@ plans.add('developer', {
 
 plans.add('team', {
     price: {
-        amount: '20 + 15 * (n - 1)',
-        formula: function (n) { return 20 + 15 * (n - 1) },
+        equation: '20 + 10 * (n - 1)',
+        formula: function (n) { return 20 + 10 * (n - 1) },
         min: 2,
-        max: 9,
-        init: 3
+        max: 10,
+        init: 2
     },
     per: 'month',
     image: 'images/developer.png',
-    description: 'Buy developer plans for your whole team in bulk.',
+    description: 'Perfect for whole teams of designers and developers!',
+    features: [ 'unlimited sessions', 'ssh tunnels' ],
     more: [
-        'All the features of developer plans with ',
-        ''
+        'Use browserling for as long as you need, as much as you like.',
+        'SSH tunnels to access localhost and intranet services'
     ]
 });
