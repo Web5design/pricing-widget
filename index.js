@@ -6,6 +6,7 @@ var path = require('path');
 
 var html = {
     plan: require('./html/plan'),
+    plans: require('./html/plans'),
     more: require('./html/more'),
     purchase: require('./html/purchase'),
     success: require('./html/success')
@@ -25,7 +26,7 @@ function Plans (opts, cb) {
     self.plans = {};
     
     self.pages = swoop({
-        plans: document.createElement('div'),
+        plans: hyperglue(html.plans, {})
     });
     
     self.pages.element.className = 'plans';
@@ -80,6 +81,18 @@ Plans.prototype.add = function (name, plan) {
         '.quantity .formula': plan.price.amount || '0',
         '.quantity .result': plan.price.formula
             && plan.price.formula(plan.price.initial)
+    });
+    
+    var result = slide.querySelector('.result');
+    var quantity = slide.querySelector('.quantity');
+    var plus = slide.querySelector('input[name="plus"]');
+    var minus = slide.querySelector('input[name="minus"]');
+    
+    plus.addEventListener('click', function (ev) {
+        quantity.value = quantity.value + 1;
+    });
+    minus.addEventListener('click', function (ev) {
+        quantity.value = Math.min(2, quantity.value - 1);
     });
     
     slide.querySelector('.quantity').style.display

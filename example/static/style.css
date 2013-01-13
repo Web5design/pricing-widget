@@ -11,6 +11,13 @@ h1 {
     margin: auto;
 }
 
+#pricing .note {
+    position: absolute;
+    bottom: 8px;
+    right: 25px;
+    color: rgb(200,220,240);
+}
+
 #pricing .plans {
     background-image: url(/images/pricing_form.png);
     width: 570px;
