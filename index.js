@@ -143,6 +143,17 @@ Plans.prototype.add = function (name, plan) {
     
     purchase.addEventListener('submit', function (ev) {
         ev.preventDefault();
+        self.emit('purchase', {
+            name: name,
+            number: plan.price.formula ? quantity.value : 1,
+            amount: plan.price.formula
+                ? plan.price.formula(quantity.value)
+                : plan.price
+            ,
+            cvc: purchase.querySelector('input[name="cvc"]').value,
+            exp_month: purchase.querySelector('input[name="exp-month"]').value,
+            exp_year: purchase.querySelector('input[name="exp-year"]').value
+        });
     });
     
     (function () {

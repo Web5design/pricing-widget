@@ -5,6 +5,10 @@ var plans = pricing(function (plan) {
 });
 plans.appendTo('#pricing');
 
+plans.on('purchase', function (params) {
+    console.log(params);
+});
+
 plans.add('free', {
     price: 0,
     per: 'month',

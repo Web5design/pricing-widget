@@ -4,8 +4,6 @@ module.exports = [
       '<span class="plan-name"></span>',
       '($<span class="amount"></span> USD)',
     '</div>',
-    '<input type="hidden" name="amount" value="">',
-    '<input type="hidden" name="plan" value="">',
     
     '<div>full name</div>',
     '<div>',
@@ -24,9 +22,9 @@ module.exports = [
     
     '<div>expiration (mm/yyyy)</div>',
     '<div>',
-    '<input type="text" size="2" name="expiry-month"/>',
+    '<input type="text" size="2" name="exp-month"/>',
     '<span> / </span>',
-    '<input type="text" size="4" name="expiry-year"/>',
+    '<input type="text" size="4" name="exp-year"/>',
     '</div>',
     
     '<div>',
