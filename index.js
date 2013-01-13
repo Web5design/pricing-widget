@@ -84,15 +84,16 @@ Plans.prototype.add = function (name, plan) {
     });
     
     var result = slide.querySelector('.result');
-    var quantity = slide.querySelector('.quantity');
+    var quantity = slide.querySelector('input[name="quantity"]');
     var plus = slide.querySelector('input[name="plus"]');
     var minus = slide.querySelector('input[name="minus"]');
     
     plus.addEventListener('click', function (ev) {
-        quantity.value = quantity.value + 1;
+        quantity.value = Math.floor(Number(quantity.value)) + 1;
     });
     minus.addEventListener('click', function (ev) {
-        quantity.value = Math.min(2, quantity.value - 1);
+        var q = Math.floor(Number(quantity.value));
+        quantity.value = Math.max(2, q - 1);
     });
     
     slide.querySelector('.quantity').style.display
