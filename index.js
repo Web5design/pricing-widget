@@ -102,6 +102,7 @@ Plans.prototype.add = function (name, plan) {
         slider.on('value', function (value) {
             quantity.value = value;
             result.textContent = plan.price.formula(value);
+            buy.style.display = value <= 0 ? 'none' : 'block';
         });
         quantity.addEventListener('change', onchange);
         quantity.addEventListener('keydown', onchange);
@@ -125,6 +126,7 @@ Plans.prototype.add = function (name, plan) {
         purchase.querySelector('.amount').textContent = amount;
         self.showPage(name + '/purchase');
     });
+    if (plan.price <= 0) buy.style.display = 'none';
     
     self.pages.addSlide(name, slide);
     
