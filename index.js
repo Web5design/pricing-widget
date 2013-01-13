@@ -2,6 +2,7 @@ var EventEmitter = require('events').EventEmitter;
 var hyperglue = require('hyperglue');
 var swoop = require('swoop');
 var singlePage = require('single-page');
+var slideways = require('slideways');
 var path = require('path');
 
 var html = {
@@ -85,20 +86,22 @@ Plans.prototype.add = function (name, plan) {
     
     var result = slide.querySelector('.result');
     var quantity = slide.querySelector('input[name="quantity"]');
-    var plus = slide.querySelector('input[name="plus"]');
-    var minus = slide.querySelector('input[name="minus"]');
-    
-    plus.addEventListener('click', function (ev) {
-        quantity.value = Math.floor(Number(quantity.value)) + 1;
-    });
-    minus.addEventListener('click', function (ev) {
-        var q = Math.floor(Number(quantity.value));
-        quantity.value = Math.max(2, q - 1);
-    });
     
     slide.querySelector('.quantity').style.display
         = plan.price.amount ? 'block' : 'none'
     ;
+    
+    if (plan.price.formula) {
+        var slider = slideways({ min: 2, max: 9, init: 3, snap: 1 });
+        slider.appendTo(slide.querySelector('.slide'));
+        slider.on('value', function (value) {
+            quantity.value = value;
+            result.textContent = plan.price.formula(value);
+        });
+        quantity.addEventListener('change', onchange);
+        quantity.addEventListener('keydown', onchange);
+        function onchange () { slider.set(quantity.value) }
+    }
     
     var back = slide.querySelector('.back a');
     back.addEventListener('click', function (ev) {
