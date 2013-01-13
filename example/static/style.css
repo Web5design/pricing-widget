@@ -108,6 +108,11 @@ h1 {
     color: white;
 }
 
+#pricing .more .quantity .parenthetical {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
 #pricing .more .quantity input[name="quantity"] {
     width: 50px;
     height: 2.5em;
