@@ -49,7 +49,7 @@ Plans.prototype.add = function (name, plan) {
     
     var params = {
         '.icon img': { src: plan.image },
-        '.price .amount': plan.price.label || plan.price,
+        '.price .amount': plan.price.amount || plan.price,
         '.price .per': plan.per ? '/ ' + plan.per : '',
         '.title': plan.title !== undefined ? plan.title : name + ' plan',
         '.desc .text': plan.description || '',
@@ -74,9 +74,12 @@ Plans.prototype.add = function (name, plan) {
             }
             return ul;
         })(),
-        '.quantity input': {
-          value: plan.price && plan.price.initial || 2
-        }
+        '.quantity input[name="quantity"]': {
+            value: plan.price && plan.price.initial || 2
+        },
+        '.quantity .formula': plan.price.amount || '0',
+        '.quantity .result': plan.price.formula
+            && plan.price.formula(plan.price.initial)
     });
     
     slide.querySelector('.quantity').style.display

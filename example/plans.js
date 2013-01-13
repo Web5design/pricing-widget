@@ -33,8 +33,8 @@ plans.add('developer', {
 
 plans.add('team', {
     price: {
-        amount: function (n) { return n * 20 },
-        label: '20 + 15 * n',
+        amount: '20 + 15 * n',
+        formula: function (n) { return n * 20 },
         initial: 2
     },
     per: 'month',
