@@ -108,11 +108,13 @@ Plans.prototype.add = function (name, plan) {
         function onchange () { slider.set(quantity.value) }
     }
     
-    var back = slide.querySelector('.back a');
-    back.addEventListener('click', function (ev) {
-        ev.preventDefault();
-        window.history.back();
-    });
+    (function () {
+        var back = slide.querySelector('.back a');
+        back.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            self.showPage('plans');
+        });
+    })();
     
     var buy = slide.querySelector('.buy');
     buy.addEventListener('click', function (ev) {
@@ -136,12 +138,14 @@ Plans.prototype.add = function (name, plan) {
         'input[name="plan"]': { value: name },
     });
     self.pages.addSlide(name + '/purchase', purchase);
-    
-    var back = purchase.querySelector('.back a');
-    back.addEventListener('click', function (ev) {
-        ev.preventDefault();
-        window.history.back();
-    });
+
+    (function () {
+        var back = purchase.querySelector('.back a');
+        back.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            self.showPage(name);
+        });
+    })();
 };
 
 Plans.prototype.appendTo = function (target) {
