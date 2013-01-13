@@ -35,7 +35,7 @@ plans.add('team', {
     price: {
         amount: '20 + 15 * (n - 1)',
         formula: function (n) { return 20 + 15 * (n - 1) },
-        initial: 2
+        initial: 3
     },
     per: 'month',
     image: 'images/developer.png',
