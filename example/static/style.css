@@ -172,20 +172,6 @@ h1 {
     font-weight: bold;
 }
 
-#pricing .buy.pressed:active,
-#pricing .buy.pressed {
-    background-image: url(/images/buy_pressed.png);
-}
-
-#pricing .buy.free {
-    background-image: url(/images/downgrade.png);
-}
-
-#pricing .buy.free.pressed:active,
-#pricing .buy.free.pressed {
-    background-image: url(/images/downgrade_pressed.png);
-}
-
 #pricing .cc .purchase {
     width: 201px;
     height: 51px;
@@ -199,11 +185,6 @@ h1 {
 }
 
 #pricing .cc .purchase:active {
-    background-image: url(/images/purchase_pressed.png);
-}
-
-#pricing .cc .purchase.pressed:active,
-#pricing .cc .purchase.pressed {
     background-image: url(/images/purchase_pressed.png);
 }
 
