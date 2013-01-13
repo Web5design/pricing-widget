@@ -93,9 +93,9 @@ Plans.prototype.add = function (name, plan) {
     
     if (plan.price.formula) {
         var slider = slideways({
-            min: 2,
-            max: 9,
-            init: plan.price.initial,
+            min: plan.price.min,
+            max: plan.price.max,
+            init: plan.price.init,
             snap: 1
         });
         slider.appendTo(slide.querySelector('.slide'));
