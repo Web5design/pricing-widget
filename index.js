@@ -33,7 +33,14 @@ function Plans (opts, cb) {
     self.pages.element.className = 'plans';
     self.pages.show('plans');
     
+    var first = true;
     var showPage = singlePage(function (href) {
+        var parts = href.split('/');
+        if (first && parts[parts.length-1] === 'purchase') {
+            var plan = self.plans[parts[parts.length-2]];
+            if (plan && plan.price.formula) return showPage(name);
+        }
+        first = false;
         self._pageHandler(href);
     });
     self.showPage = function (href) {
@@ -142,7 +149,7 @@ Plans.prototype.add = function (name, plan) {
     var purchase = hyperglue(html.purchase, {
         '.plan-name': params['.title'],
         '.amount': plan.price.formula
-            ? plan.price.formula(plan.price.initial)
+            ? plan.price.formula(plan.price.init)
             : plan.price
         ,
         'input[name="amount"]': { value: plan.price },
