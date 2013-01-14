@@ -1,13 +1,12 @@
 var pricing = require('../');
-var plans = pricing(function (plan) {
-    console.log('purchased ' + plan.name);
-    plan.confirm();
+var plans = pricing(function (payment) {
+    console.log('purchased ' + payment.name);
+    setTimeout(function () {
+        payment.accept();
+    }, 2000);
+    //payment.reject(err);
 });
 plans.appendTo('#pricing');
-
-plans.on('purchase', function (params) {
-    console.log(params);
-});
 
 plans.add('free', {
     price: 0,

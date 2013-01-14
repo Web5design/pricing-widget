@@ -5,12 +5,15 @@ var singlePage = require('single-page');
 var slideways = require('slideways');
 var path = require('path');
 
+var Payment = require('./lib/payment');
+
 var html = {
     plan: require('./html/plan'),
     plans: require('./html/plans'),
     more: require('./html/more'),
     purchase: require('./html/purchase'),
-    success: require('./html/success')
+    success: require('./html/success'),
+    error: require('./html/error')
 };
 
 module.exports = Plans;
@@ -47,7 +50,7 @@ function Plans (opts, cb) {
         showPage(path.resolve(self.path, href));
     };
     
-    if (typeof cb === 'function') self.on('buy', cb);
+    if (typeof cb === 'function') self.on('payment', cb);
 }
 
 Plans.prototype = new EventEmitter;
@@ -157,6 +160,13 @@ Plans.prototype.add = function (name, plan) {
     });
     self.pages.addSlide(name + '/purchase', purchase);
     
+    var errorPage = hyperglue(html.error, { '.plan-name': params['.title'] });
+    self.pages.addSlide(name + '/purchase/error', errorPage);
+    
+    self.pages.addSlide(name + '/purchase/success', hyperglue(html.success, {
+        '.plan-name': params['.title']
+    }));
+    
     var busy = false;
     
     self.pages.on('show', function (href) {
@@ -175,17 +185,33 @@ Plans.prototype.add = function (name, plan) {
         purchase.querySelector('.purchase').style.display = 'none';
         purchase.querySelector('.busy').style.display = 'block';
         
-        self.emit('purchase', {
+        var cvc = purchase.querySelector('input[name="cvc"]');
+        var number = purchase.querySelector('input[name="number"]');
+        number.value = '';
+        cvc.value = '';
+        
+        var payment = new Payment({
             name: name,
-            number: plan.price.formula ? quantity.value : 1,
+            number: number.value,
             amount: plan.price.formula
                 ? plan.price.formula(quantity.value)
                 : plan.price
             ,
-            cvc: purchase.querySelector('input[name="cvc"]').value,
+            cvc: cvc.value,
             exp_month: purchase.querySelector('input[name="exp-month"]').value,
-            exp_year: purchase.querySelector('input[name="exp-year"]').value
+            exp_year: purchase.querySelector('input[name="exp-year"]').value,
         });
+        
+        payment.on('accept', function () {
+            self.showPage(name + '/purchase/success');
+        });
+        
+        payment.on('reject', function (err) {
+            errorPage.querySelector('.message').textContent = err;
+            self.showPage(name + '/purchase/error');
+        });
+        
+        self.emit('payment', payment);
     });
     
     (function () {
