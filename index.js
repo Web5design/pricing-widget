@@ -150,8 +150,15 @@ Plans.prototype.add = function (name, plan) {
     });
     self.pages.addSlide(name + '/purchase', purchase);
     
+    var busy = false;
     purchase.addEventListener('submit', function (ev) {
         ev.preventDefault();
+        if (busy) return;
+        busy = true;
+        
+        purchase.querySelector('.purchase').style.display = 'none';
+        purchase.querySelector('.busy').style.display = 'block';
+        
         self.emit('purchase', {
             name: name,
             number: plan.price.formula ? quantity.value : 1,
