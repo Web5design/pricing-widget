@@ -5,6 +5,7 @@ h1 {
 }
 
 #pricing {
+    font-family: Ubuntu, Helvetica, sans-serif;
     position: relative;
     text-align: center;
     width: 600px;
@@ -153,7 +154,7 @@ h1 {
     color: rgb(30,40,70);
     width: 300px;
     margin: auto;
-    margin-top: 25px;
+    margin-top: 15px;
 }
 
 #pricing .cc input[type="text"] {
@@ -268,10 +269,14 @@ h1 {
 
 #payment-success {
     width: 369;
-    height: 480;
+    height: 500;
     background-image: url(/images/account_upgraded.png);
+    background-position: center 80px;
+    background-size: 310px 420px;
+    background-repeat: no-repeat;
     margin: auto;
-    margin-top: 10px;
+    font-size: 24px;
+    color: rgb(180,255,127);
 }
 
 #purchase .error {
