@@ -148,7 +148,7 @@ h1 {
 
 #pricing .cc {
     padding: 25px;
-    border-radius: 25px;
+    border-radius: 10px;
     background-color: rgba(240,248,252,0.25);
     color: rgb(30,40,70);
     width: 300px;

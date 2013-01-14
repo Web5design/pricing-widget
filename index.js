@@ -151,6 +151,15 @@ Plans.prototype.add = function (name, plan) {
     self.pages.addSlide(name + '/purchase', purchase);
     
     var busy = false;
+    
+    self.pages.on('show', function (href) {
+        if (href === name + '/purchase') {
+            purchase.querySelector('.purchase').style.display = 'block';
+            purchase.querySelector('.busy').style.display = 'none';
+            busy = false;
+        }
+    });
+    
     purchase.addEventListener('submit', function (ev) {
         ev.preventDefault();
         if (busy) return;
