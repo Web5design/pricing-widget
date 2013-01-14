@@ -147,17 +147,18 @@ h1 {
 }
 
 #pricing .cc {
-    padding: 15px;
+    padding: 25px;
     border-radius: 25px;
-    background-color: rgb(240,248,252);
+    background-color: rgba(240,248,252,0.25);
+    color: rgb(30,40,70);
     width: 300px;
     margin: auto;
-    margin-top: 35px;
+    margin-top: 25px;
 }
 
 #pricing .cc input[type="text"] {
     text-align: center;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 3px;
     border-style: solid;
     border-color: rgb(30,50,120);
@@ -181,6 +182,7 @@ h1 {
     padding: 0px;
     border-width: 0px;
     margin-top: 10px;
+    margin-bottom: 20px;
     cursor: pointer;
 }
 
@@ -198,7 +200,7 @@ h1 {
     padding: 0px;
     margin: auto;
     margin-top: 31px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 #pricing .busy {
