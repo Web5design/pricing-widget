@@ -35,7 +35,13 @@ function Plans (opts, cb) {
     });
     
     self.pages.element.className = 'pricing-widget';
+    
     self.pages.show('plans');
+    
+    process.nextTick(function () {
+        var style = window.getComputedStyle(self.pages.element);
+        self.pages.element.style.height = style.height;
+    });
     
     var first = true;
     var showPage = singlePage(function (href) {

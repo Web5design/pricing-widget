@@ -1,5 +1,5 @@
 module.exports = [  
-  '<form id="purchase" method="POST" class="cc">',
+  '<form method="POST" class="cc">',
     '<div>',
       '<span class="plan-name"></span>',
       '($<span class="amount"></span> USD)',

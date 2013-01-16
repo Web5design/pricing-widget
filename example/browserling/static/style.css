@@ -1,40 +1,22 @@
 .pricing-widget {
     font-family: Ubuntu, Helvetica, sans-serif;
-    position: relative;
-    text-align: center;
     margin: auto;
-    
     background-image: url(/images/pricing_form.png);
-    width: 570px;
-    height: 494px;
+    background-color: transparent;
+    border-radius: 0px;
     padding: 15px;
-    margin-top: 10px;
+    background-repeat: no-repeat;
 }
 
 .pricing-widget .note {
-    position: absolute;
-    bottom: 8px;
-    right: 25px;
     color: rgb(200,220,240);
 }
 
-.pricing-widget #special {
-    width: 450px;
-    margin: auto;
-    margin-top: 10px;
-    background-color: rgb(203,219,250);
-    border-radius: 20px;
-    padding: 20px;
-}
-
 .pricing-widget .plan {
-    height: 150px;
+    padding-left: 15px;
+    padding-right: 15px;
     padding-top: 5px;
     padding-bottom: 5px;
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-bottom: 5px;
-    cursor: pointer;
 }
 
 .pricing-widget .plan:hover {
