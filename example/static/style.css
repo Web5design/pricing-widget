@@ -221,6 +221,11 @@ h1 {
 
 #pricing .back a:link, #pricing .back a:visited {
     color: rgb(215,245,255);
+    text-decoration: none;
+}
+
+#pricing .back a:hover {
+    text-decoration: underline;
 }
 
 .plans .more ul {
@@ -279,7 +284,26 @@ h1 {
     color: rgb(180,255,127);
 }
 
-#purchase .error {
+#pricing .error {
     font-weight: bold;
-    color: red;
+    color: rgb(255,200,200);
+    border-radius: 20px;
+    padding: 30px;
+    position: absolute;
+    bottom: 30px;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    background-image: url(/images/error.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: rgba(255,50,50,0.5);
+}
+
+#pricing .error .header {
+    
+}
+
+#pricing .error .message {
+    color: rgb(255,150,150);
 }

@@ -2,9 +2,9 @@ var pricing = require('../');
 var plans = pricing(function (payment) {
     console.log('purchased ' + payment.name);
     setTimeout(function () {
-        payment.accept();
+        //payment.accept();
+        payment.reject('error error test test destroy destroy abort abort');
     }, 2000);
-    //payment.reject(err);
 });
 plans.appendTo('#pricing');
 

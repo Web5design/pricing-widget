@@ -43,6 +43,5 @@ module.exports = [
     '<div class="back">',
       '<a href="#">back</a>',
     '</div>',
-    '<div class="error"></div>',
   '</form>'
 ].join('\n')

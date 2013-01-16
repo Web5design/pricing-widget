@@ -161,6 +161,13 @@ Plans.prototype.add = function (name, plan) {
     self.pages.addSlide(name + '/purchase', purchase);
     
     var errorPage = hyperglue(html.error, { '.plan-name': params['.title'] });
+    (function () {
+        var back = errorPage.querySelector('.back a')
+        back.addEventListener('click', function (ev) {
+            ev.preventDefault();
+            self.showPage(name + '/purchase');
+        });
+    })();
     self.pages.addSlide(name + '/purchase/error', errorPage);
     
     self.pages.addSlide(name + '/purchase/success', hyperglue(html.success, {
