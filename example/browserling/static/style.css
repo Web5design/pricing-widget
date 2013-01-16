@@ -21,133 +21,41 @@
 
 .pricing-widget .plan:hover {
     background-color: rgba(110,50,130,0.3);
-    border-radius: 30px;
 }
 
-.pricing-widget .plan .yours {
-    display: none;
-}
-
-.pricing-widget .plan.using .yours {
-    display: block;
-    font-size: 20px;
-    color: rgb(255,255,0);
-}
-
-.pricing-widget .plan.using {
-    background-color: rgb(90,110,130);
-    border-radius: 30px;
-}
-
-.pricing-widget .back {
-    font-size: 24px;
-    position: absolute;
-    right: 50px;
-    bottom: 30px;
-}
-
-.pricing-widget .buy {
-    position: absolute;
-    left: 200px;
-    bottom: 30px;
+.pricing-widget .buy.button {
     width: 201px;
     height: 51px;
     background-image: url(/images/buy.png);
     background-color: transparent;
     padding: 0px;
+    color: transparent;
     border-width: 0px;
-    cursor: pointer;
 }
 
-.pricing-widget .buy:active {
+.pricing-widget .buy.button:hover {
+    background-color: transparent;
+}
+
+.pricing-widget .buy.button:active {
+    background-color: transparent;
     background-image: url(/images/buy_pressed.png);
-}
-
-.pricing-widget .more .quantity {
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    bottom: 110px;
-    text-align: center;
-    font-size: 1.5em;
-    color: white;
-}
-
-.pricing-widget .more .quantity .keyword {
-    color: rgb(127,180,255);
-}
-
-.pricing-widget .more .quantity .variable {
-    color: rgb(180,255,127);
-}
-
-.pricing-widget .more .quantity .formula {
-    color: rgb(255,180,127);
-}
-
-.pricing-widget .more .quantity .result {
-    color: rgb(127,255,180);
-}
-
-.pricing-widget .more .quantity .where {
-    color: white;
-}
-
-.pricing-widget .more .quantity .unit {
-    margin-left: 5px;
-    color: rgb(255,255,0);
-}
-
-.pricing-widget .more .quantity .slide {
-    margin-top: 5px;
 }
 
 .pricing-widget .more .quantity .slide .runner {
     background-color: rgb(90,80,120);
 }
 
-.pricing-widget .more .quantity input[name="quantity"] {
-    width: 50px;
-    height: 2.5em;
-    padding: 5px;
-    font-size: 16px;
-    text-align: center;
-    border-radius: 5px;
-    border-width: 2px;
-    border-color: rgb(255,255,0);
-    border-style: solid;
-    background-color: rgba(255,255,255,0.1);
-    color: rgb(255,255,0);
-}
-
 .pricing-widget .cc {
-    padding: 25px;
-    border-radius: 10px;
     background-color: rgba(240,248,252,0.25);
     color: rgb(30,40,70);
-    width: 300px;
-    margin: auto;
-    margin-top: 15px;
 }
 
 .pricing-widget .cc input[type="text"] {
-    text-align: center;
-    border-radius: 5px;
-    padding: 3px;
-    border-style: solid;
     border-color: rgb(30,50,120);
 }
 
-.pricing-widget .cc div {
-    margin-bottom: 5px;
-}
-
-.pricing-widget .cc .plan-name {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.pricing-widget .cc .purchase .button {
+.pricing-widget .purchase.button {
     width: 201px;
     height: 51px;
     background-image: url(/images/purchase.png);
@@ -155,94 +63,29 @@
     color: transparent;
     padding: 0px;
     border-width: 0px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    cursor: pointer;
 }
 
-.pricing-widget .cc .purchase .button:active {
+.pricing-widget .purchase.button:active {
     background-image: url(/images/purchase_pressed.png);
+}
+
+.pricing-widget .purchase.button:hover {
+    background-color: transparent;
+}
+
+.pricing-widget .buy.button:active {
+    background-color: transparent;
+    background-image: url(/images/buy_pressed.png);
 }
 
 .pricing-widget .cc .busy-image {
     background-image: url(/images/busy.gif);
     background-size: 100% 100%;
-    width: 300px;
-    height: 31px;
     background-color: transparent;
     color: transparent;
+    width: 300px;
+    height: 31px;
     padding: 0px;
-    margin: auto;
-    margin-top: 31px;
-    margin-bottom: 24px;
-}
-
-.pricing-widget .busy {
-    display: none;
-}
-
-.pricing-widget h2 {
-    margin-bottom: 8px;
-    font-size: 24px;
-}
-
-.pricing-widget .starting {
-    display: none;
-    font-size: 14px;
-    color: rgb(215,245,255);
-}
-
-.pricing-widget .back a:link, .pricing-widget .back a:visited {
-    color: rgb(215,245,255);
-    text-decoration: none;
-}
-
-.pricing-widget .back a:hover {
-    text-decoration: underline;
-}
-
-.pricing-widget .more ul {
-    text-align: left;
-    color: white;
-}
-
-.pricing-widget .more ul li {
-    margin-top: 7px;
-    margin-bottom: 7px;
-}
-
-.pricing-widget .more .additional {
-    margin-bottom: 10px;
-}
-
-.pricing-widget .icon {
-    float: left;
-}
-
-.pricing-widget .plan .desc {
-    margin-left: 170px;
-    text-align: left;
-    color: white;
-}
-
-.pricing-widget .plan .desc .price {
-    float: right;
-    color: white;
-    font-size: 20px;
-}
-
-.pricing-widget .plan .desc .price .per {
-    font-size: 12px;
-}
-
-.pricing-widget .plan .desc .title {
-    font-size: 24px;
-    color: rgb(255,255,0);
-}
-
-.pricing-widget .plan .desc .features {
-    color: rgb(180,255,100);
-    margin-top: 10px;
 }
 
 .pricing-widget .success {
@@ -253,24 +96,12 @@
     background-size: 310px 420px;
     background-repeat: no-repeat;
     margin: auto;
-    font-size: 24px;
-    color: rgb(180,255,127);
 }
 
 .pricing-widget .error {
-    font-weight: bold;
-    color: rgb(255,200,200);
-    border-radius: 20px;
-    padding: 30px;
-    position: absolute;
-    bottom: 30px;
-    top: 30px;
-    left: 30px;
-    right: 30px;
     background-image: url(/images/error.png);
     background-position: center center;
     background-repeat: no-repeat;
-    background-color: rgba(255,50,50,0.5);
 }
 
 .pricing-widget .error .message {

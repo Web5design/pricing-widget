@@ -187,7 +187,7 @@ Plans.prototype.add = function (name, plan) {
     
     self.pages.on('show', function (href) {
         if (href === name + '/purchase') {
-            purchase.querySelector('.purchase').style.display = 'block';
+            purchase.querySelector('.pre-busy').style.display = 'block';
             purchase.querySelector('.busy').style.display = 'none';
             busy = false;
         }
@@ -198,7 +198,7 @@ Plans.prototype.add = function (name, plan) {
         if (busy) return;
         busy = true;
         
-        purchase.querySelector('.purchase').style.display = 'none';
+        purchase.querySelector('.pre-busy').style.display = 'none';
         purchase.querySelector('.busy').style.display = 'block';
         
         var cvc = purchase.querySelector('input[name="cvc"]');

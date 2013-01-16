@@ -1,7 +1,7 @@
 var pricing = require('../../');
 var plans = pricing(function (payment) {
     console.log('purchased ' + payment.name);
-    payment.accept();
+    setTimeout(function () { payment.accept() }, 2000);
 });
 plans.appendTo('#pricing');
 
