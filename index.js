@@ -8,13 +8,14 @@ var path = require('path');
 var Payment = require('./lib/payment');
 
 var html = {
-    plan: require('./html/plan'),
-    plans: require('./html/plans'),
-    more: require('./html/more'),
-    purchase: require('./html/purchase'),
-    success: require('./html/success'),
-    error: require('./html/error')
+    plan: require('./static/html/plan'),
+    plans: require('./static/html/plans'),
+    more: require('./static/html/more'),
+    purchase: require('./static/html/purchase'),
+    success: require('./static/html/success'),
+    error: require('./static/html/error')
 };
+var css = require('./static/css');
 
 module.exports = Plans;
 
@@ -51,6 +52,8 @@ function Plans (opts, cb) {
     };
     
     if (typeof cb === 'function') self.on('payment', cb);
+    
+    if (opts.insertCss !== false) self._insertCss();
 }
 
 Plans.prototype = new EventEmitter;
@@ -247,5 +250,19 @@ Plans.prototype._pageHandler = function (href) {
     }
     else if (!/^(\.\.|\/)/.test(name)) {
         this.pages.show(name);
+    }
+};
+
+Plans.prototype._insertCss = function () {
+    if (this._insertedCss) return;
+    this._insertedCss = true;
+    
+    var style = document.createElement('style');
+    style.appendChild(document.createTextNode(css));
+    if (document.head.childNodes.length) {
+        document.head.insertBefore(style, document.head.childNodes[0]);
+    }
+    else {
+        document.head.appendChild(style);
     }
 };
