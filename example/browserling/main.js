@@ -3,6 +3,19 @@ var plans = pricing(function (payment) {
     console.log('purchased ' + payment.name);
     setTimeout(function () { payment.accept() }, 2000);
 });
+
+plans.note('purchase', [
+    'We use Stripe for billing.',
+    'We don\'t store your card number anywhere ourselves.'
+].join(' '));
+
+plans.note('busy', [
+    'Processing your transaction.',
+    'Please be patient and don\'t re-submit!'
+].join(' '));
+
+plans.note('success', 'Payment success! Thanks for using browserling!');
+
 plans.appendTo('#pricing');
 
 plans.add('free', {

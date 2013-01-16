@@ -4,7 +4,7 @@ module.exports = [
     '<div class="desc">',
       '<div class="price">',
         '<span class="starting">starting from</span>',
-        '$<span class="amount">---</span>',
+        '<span class="symbol">$</span><span class="amount">---</span>',
         '<span class="per"></span>',
       '</div>',
       '<div class="title"></div>',

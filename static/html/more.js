@@ -6,7 +6,7 @@ module.exports = [
       '<div class="equation">',
         '<span class="formula"></span>',
         ' = ',
-        '$<span class="result"></span>',
+        '<span class="symbol">$</span><span class="result"></span>',
       '</div>',
       '<div class="where">',
         '<span class="keyword">where</span>',

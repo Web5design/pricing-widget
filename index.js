@@ -29,12 +29,17 @@ function Plans (opts, cb) {
     self.path = opts.path === undefined ? '/pricing' : opts.path;
     
     self.plans = {};
+    self.notes = [];
     
     self.pages = swoop({
         plans: hyperglue(html.plans, {})
     });
     
     self.pages.element.className = 'pricing-widget';
+    self.element = self.pages.element;
+    
+    self.currency = 'USD';
+    self.symbol = '$';
     
     self.pages.show('plans');
     
@@ -74,6 +79,8 @@ Plans.prototype.add = function (name, plan) {
             ? plan.price.formula(plan.price.init)
             : plan.price
         ,
+        '.symbol' : self.symbol,
+        '.currency' : self.currency,
         '.price .per': plan.per ? '/ ' + plan.per : '',
         '.title': plan.title !== undefined ? plan.title : name + ' plan',
         '.desc .text': plan.description || '',
@@ -92,6 +99,8 @@ Plans.prototype.add = function (name, plan) {
     
     var slide = hyperglue(html.more, {
         '.heading': hyperglue(html.plan, params),
+        '.symbol' : self.symbol,
+        '.currency' : self.currency,
         '.list': (function () {
             var ul = document.createElement('ul');
             var morePoints = plan.more || [];
@@ -164,6 +173,8 @@ Plans.prototype.add = function (name, plan) {
             ? plan.price.formula(plan.price.init)
             : plan.price
         ,
+        '.symbol': self.symbol,
+        '.currency': self.currency,
         'input[name="amount"]': { value: plan.price },
         'input[name="plan"]': { value: name },
     });
@@ -237,6 +248,8 @@ Plans.prototype.add = function (name, plan) {
             self.showPage(name);
         });
     })();
+    
+    for (var i = 0; i < self.notes.length; i++) self.notes[i]();
 };
 
 Plans.prototype.appendTo = function (target) {
@@ -244,6 +257,29 @@ Plans.prototype.appendTo = function (target) {
         target = document.querySelector(target);
     }
     this.pages.appendTo(target);
+};
+
+Plans.prototype.note = function (page, msg) {
+    var self = this;
+    var fn = function () {
+        var nodes = self.element.querySelectorAll('.' + page + '-note');
+        for (var i = 0; i < nodes.length; i++) {
+            nodes[i].innerHTML = '';
+            nodes[i].appendChild(document.createTextNode(msg));
+        }
+    };
+    self.notes.push(fn);
+    fn();
+};
+
+Plans.prototype.setCurrency = function (name) {
+    this.currency = name;
+    hyperglue(this.element, { '.currency' : name });
+};
+
+Plans.prototype.setSymbol = function (symbol) {
+    this.symbol = symbol;
+    hyperglue(this.element, { '.symbol' : symbol });
 };
 
 Plans.prototype._pageHandler = function (href) {

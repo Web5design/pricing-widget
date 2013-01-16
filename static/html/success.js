@@ -1,5 +1,7 @@
 module.exports = [
   '<div class="success">',
-    'Payment success! Thanks for using browserling!',
+    '<div class="success-note note">',
+      'Payment success! Thanks for your business!',
+    '</div>',
   '</div>'
 ].join('\n')
