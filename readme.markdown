@@ -10,7 +10,7 @@ should definitely check out if you need to do some cross-browser testing!
 
 # example
 
-The default style [looks like this](https://substack.net/projects/pricing-widget/basic),
+The default style [looks like this](http://substack.net/projects/pricing-widget/basic/),
 but
 [you can get fancy](http://substack.net/projects/pricing-widget/browserling/).
 

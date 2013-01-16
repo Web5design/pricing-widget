@@ -1,6 +1,6 @@
 {
     "name" : "pricing-widget",
-    "version" : "0.0.0",
+    "version" : "0.0.1",
     "description" : "browser widget to accept payments by credit card",
     "main" : "index.js",
     "devDependencies" : {
