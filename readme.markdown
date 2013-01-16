@@ -5,6 +5,9 @@ Accept online payments by credit card.
 This module provides only the browser interface code necessary for accepting
 online payments.
 
+We use this widget code at [browserling](http://browserling.com/) which you
+should definitely check out if you need to do some cross-browser testing!
+
 # example
 
 The default style [looks like this](https://substack.net/projects/pricing-widget/basic),

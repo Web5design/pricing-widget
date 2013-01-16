@@ -1,0 +1,37 @@
+{
+    "name" : "pricing-widget",
+    "version" : "0.0.0",
+    "description" : "browser widget to accept payments by credit card",
+    "main" : "index.js",
+    "devDependencies" : {
+        "ecstatic" : "~0.3.0",
+        "browserify" : "~1.17.2"
+    },
+    "dependencies" : {
+        "hyperglue" : "~0.1.0",
+        "single-page" : "~0.2.0",
+        "slideways" : "~0.0.2",
+        "swoop" : "~0.1.9"
+    },
+    "repository" : {
+        "type" : "git",
+        "url" : "git://github.com/substack/pricing-widget.git"
+    },
+    "homepage" : "https://github.com/substack/pricing-widget",
+    "keywords" : [
+        "cc",
+        "payment",
+        "stripe",
+        "browserify",
+        "credit",
+        "card",
+        "subscription",
+        "plan"
+    ],
+    "author" : {
+        "name" : "James Halliday",
+        "email" : "mail@substack.net",
+        "url" : "http://substack.net"
+    },
+    "license" : "MIT"
+}
