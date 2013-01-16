@@ -33,7 +33,7 @@ function Plans (opts, cb) {
         plans: hyperglue(html.plans, {})
     });
     
-    self.pages.element.className = 'plans';
+    self.pages.element.className = 'pricing-widget';
     self.pages.show('plans');
     
     var first = true;
