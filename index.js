@@ -194,8 +194,6 @@ Plans.prototype.add = function (name, plan) {
         
         var cvc = purchase.querySelector('input[name="cvc"]');
         var number = purchase.querySelector('input[name="number"]');
-        number.value = '';
-        cvc.value = '';
         
         var payment = new Payment({
             name: name,
@@ -208,6 +206,8 @@ Plans.prototype.add = function (name, plan) {
             exp_month: purchase.querySelector('input[name="exp-month"]').value,
             exp_year: purchase.querySelector('input[name="exp-year"]').value,
         });
+        number.value = '';
+        cvc.value = '';
         
         payment.on('accept', function () {
             self.showPage(name + '/purchase/success');
